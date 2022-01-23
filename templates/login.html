@@ -1,0 +1,49 @@
+{% extends "base.html" %} // Inherits all the components from base template, including the header and footer
+{% block title%} Home {% endblock%}
+
+
+{% block body %}
+
+{% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message!</strong> {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+
+<div class="container  py-5">
+    <div class="text-center">
+        <a href="/"><img class="mb-4 " src="/media/daksha_logo.png" alt="loading..." width="100" height="95"></a>
+    </div>
+    <h1 class="h3 mb-3 fw-normal text-center"> Login Here</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+
+            </div>
+            <div class="col-md-4">
+               
+                <div class="login-email shadow p-3 mb-5 bg-body rounded">
+                    <label for="loginemail" class="form-label">Your Email</label>
+                    <input type="email" class="form-control" id="loginemail" placeholder="enter your email" name="loginemail">
+                </div>
+                <div class="login-password shadow p-3 mb-5 bg-body rounded my-4">
+                    <label for="loginpass" class="form-label">Your Password</label>
+                    <input type="password" class="form-control" id="loginpass" placeholder="enter your Password" name="loginpass">
+                </div>
+                <div id="btn">
+                    <button type="submit" class="btn btn-outline-primary">login</button>
+                </div>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/font_awesome.min.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    {% block head%} {% endblock%}
+
+    <title>{% block title %} {% endblock %}</title>
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/"> <img src="/media/daksha_logo.png" alt="" width="36" height="35"
+                    class="d-inline-block align-text-center me-2">Daksha</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end fs-5" id="navbarSupportedContent">
+                <ul class="navbar-nav me-5">
+                    <li class="nav-item me-5">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item me-5">
+                        <a class="nav-link" href="/profile">Profile</a>
+                    </li>
+                    <li class="nav- me-5">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item me-5">
+                        <a class="nav-link" href="/galary">Galary</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="/contact">Contact_Us</a>
+                    </li>
+                </ul>
+
+                    <!-- signup Button trigger modal -->
+                    <button type="button" class="btn btn-outline-primary me-5" data-bs-toggle="modal" data-bs-target="#signupModal">Sign_Up</button>
+
+                    <!-- login Button trigger modal -->
+                    <button type="button" class="btn btn-outline-primary me-5" data-bs-toggle="modal" data-bs-target="#loginModal">login</button>
+
+            </div>
+        </div>
+    </nav>
+
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show mb-0" role="alert">
+        <strong>Message!</strong> {{ message }}
+        <button type="button" class="btn-close " data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+
+
+    <!-- signup Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signupModal">Sign_Up Now</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/signup" method="POST" >
+                        {% csrf_token %}
+                        <div class="col-md">
+                            <label for="signupuser">Your User Name</label>
+                            <input type="text" class="form-control shadow p-3 mb-5 bg-body rounded" id="signupuser"
+                                placeholder="enter your user name" name="signupuser">
+                        </div>
+                        <div class="col-md">
+                            <label for="signupemail">Your Email address</label>
+                            <input type="email" class="form-control shadow p-3 mb-5 bg-body rounded" id="signupemail"
+                                placeholder="enter your email-id" name="signupemail">
+                        </div>
+                        <div class="col-md ">
+                            <label for="signuppassword">Your Password</label>
+                            <input type="password" class="form-control shadow p-3 mb-5 bg-body rounded" id="signuppassword"
+                                placeholder="enter your password" name="signuppassword">
+                        </div>
+                        <div class="col-md ">
+                            <label for="signupcpassword">Conform Your Password</label>
+                            <input type="password" class="form-control shadow p-3 mb-5 bg-body rounded" id="signupcpassword"
+                                placeholder="conform your password" name="signupcpassword">
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary mb-2 mx-2">Sign_Up</button>
+                    </form>
+                        
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModal">Login Now</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/login" method="POST" >
+                        {% csrf_token %}
+                        <div class="col-md">
+                            <label for="loginemail">Your Email address</label>
+                            <input type="email" class="form-control shadow p-3 mb-5 bg-body rounded" id="loginemail"
+                                placeholder="enter your email-id" name="loginemail">
+                        </div>
+                        <div class="col-md ">
+                            <label for="loginpassword">Your Password</label>
+                            <input type="password" class="form-control shadow p-3 mb-5 bg-body rounded" id="loginpassword"
+                                placeholder="enter your password" name="loginpassword">
+                        </div>
+                        <button type="submit" class="btn btn-outline-primary mb-2 mx-2">Login</button>
+                    </form> 
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% block body %}
+
+
+    {% endblock %}
+
+
+
+
+    <footer class="container-fluide bg-light shadow-sm text-muted">
+        <div class="container ">
+            <div class="row py-3">
+
+                <div class="col-md-8">
+                    <span>Follow us : </span>
+                    <a href="#" target="blank"> <i class="fab fa-twitter me-3 ms-3 "></i> </a>
+                    <a href="#" target="blank"> <i class="fab fa-instagram me-3 "></i> </a>
+                    <a href="#" target="blank"> <i class="fab fa-linkedin me-3 "></i> </a>
+                    <a href="#" target="blank"> <i class="fab fa-facebook-square"></i> </a>
+                </div>
+
+                <div class="col-md-4">
+                    <small>Designed By : Nitesh Kumar</small>
+                </div>
+
+
+            </div>
+        </div>
+
+    </footer>
+
+
+
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/font_awesome.min.js"></script>
+</body>
+
+</html>

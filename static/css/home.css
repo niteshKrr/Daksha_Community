@@ -1,0 +1,14 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+
+section .home-txt{
+    margin-top: 150px;
+}
+
+
+section{
+    background-image: url("/media/cover_home.jpg");
+    height: 100vh;
+}

@@ -1,0 +1,80 @@
+{% extends "base.html" %}   // Inherits all the components from base template, including the header and footer
+{% block title%} Join_Us {% endblock%}
+
+
+{% block body %} 
+
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message!</strong> {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+
+<section class="contact-page py-5">
+    <h1 class="text-center fw-bold">Become a Member</h1>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-8 ">
+                <div class="join_us-left">
+                    <form action="/join_us" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row ">
+                        <div class="col-md ">
+                            <label for="name">Your Name</label>
+                            <input type="text" class="form-control shadow p-3 mb-5 bg-body rounded" id="name" name = "name"
+                                placeholder="enter your name" required>
+                        </div>
+                        <div class="col-md">
+                            <label for="branch">Your Branch</label>
+                            <input type="text" class="form-control shadow p-3 mb-5 bg-body rounded" id="branch" name = "branch"
+                                placeholder="enter your branch" required>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md ">
+                            <label for="reg">Your Reg. No.</label>
+                            <input type="text" class="form-control shadow p-3 mb-5 bg-body rounded" id="reg" name = "Reg"
+                                placeholder="enter your registration no." required>
+                        </div>
+                        <div class="col-md">
+                            <label for="roll">Your Roll No.</label>
+                            <input type="text" class="form-control shadow p-3 mb-5 bg-body rounded" id="roll" name = "Roll"
+                                placeholder="enter your roll no." required>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md ">
+                            <label for="session">Your Session</label>
+                            <input type="text" class="form-control shadow p-3 mb-5 bg-body rounded" id="session" name = "session"
+                                placeholder="enter your session" required>
+                        </div>
+                        <div class="col-md ">
+                            <label for="img">Upload Your Image</label>
+                            <input type="file" class="form-control shadow p-3 mb-5 bg-body rounded" id="img" name = "image" required>
+                        </div>
+                    </div>
+                    <button type="submit" id="btn" class="btn btn-outline-primary">Join Now</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="join_us-right mt-5">
+                    <div class="text ms-4 ">
+                        <h5 class="text-primary ">What You Get :</h5>
+                        <p class="text-muted"><i class="fa fa-check me-2 text-primary" aria-hidden="true"></i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt neque quisquam, necessitatibus.</p>
+                        <p class="text-muted"><i class="fa fa-check me-2 text-primary" aria-hidden="true"></i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt neque quisquam, necessitatibus.</p>
+                        <p class="text-muted"><i class="fa fa-check me-2 text-primary" aria-hidden="true"></i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt neque quisquam, necessitatibus.</p>
+                        <p class="text-muted"><i class="fa fa-check me-2 text-primary" aria-hidden="true"></i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt neque quisquam, necessitatibus.</p>
+                        <p class="text-muted"><i class="fa fa-check me-2 text-primary" aria-hidden="true"></i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt neque quisquam, necessitatibus.</p>
+                        <p class="text-muted"><i class="fa fa-check me-2 text-primary" aria-hidden="true"></i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt neque quisquam, necessitatibus.</p>
+                        <p class="text-muted"><i class="fa fa-check me-2 text-primary" aria-hidden="true"></i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt neque quisquam, necessitatibus.</p>
+                        <p class="text-muted"><i class="fa fa-check me-2 text-primary" aria-hidden="true"></i>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt neque quisquam, necessitatibus.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> 
+
+{% endblock %}

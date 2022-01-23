@@ -1,0 +1,34 @@
+{% extends "base.html" %} // Inherits all the components from base template, including the header and footer
+{% block head%}
+<link rel="stylesheet" href="/static/css/home.css">
+{% endblock%}
+
+{% block title%} Home {% endblock%}
+
+
+{% block body %}
+
+<section class="home-page py-5">
+
+    <div class="container py-5">
+        <div class="row ">
+            <div class="col-md-4">
+                <div class="home-txt text-center">
+                    <h1 class="fw-bold">WELCOME TO</h1>
+                    <h1 class="fw-bold" > DAKSHA</h1>
+                    <a href="/join_us"><button type="button" class="btn btn-outline-success">Join_Us</button></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                
+            </div>
+            <div class="col-md-5">
+                <div class="home-logo">
+                    <img src="/media/daksha_logo.png" class="img-fluid " alt="loading...">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}

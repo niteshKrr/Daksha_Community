@@ -1,0 +1,57 @@
+
+{% extends "base.html" %}   // Inherits all the components from base template, including the header and footer
+{% block title%} Home {% endblock%}
+
+
+{% block body %} 
+
+<section class="contact-page py-5">
+    <h1 class="text-center fw-bold">Contact Us</h1>
+    <div class="container py-1">
+        <div class="row">
+            <div class="col-md mt-5">
+                <div class="contact-right">
+                    <div class="row ">
+                        <div class="col-md ">
+                            <label for="name">Your Name</label>
+                            <input type="text" class="form-control shadow p-3 mb-5 bg-body rounded" id="name"
+                                placeholder="enter your name">
+                        </div>
+                        <div class="col-md">
+                            <label for="email">Your Email address</label>
+                            <input type="email" class="form-control shadow p-3 mb-5 bg-body rounded" id="email"
+                                placeholder="enter your email-id">
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md">
+                            <label for="branch">Your Branch</label>
+                            <input type="email" class="form-control shadow p-3 mb-5 bg-body rounded" id="branch"
+                                placeholder="enter your branch">
+                        </div>
+                        <div class="col-md ">
+                            <label for="session">Your Session</label>
+                            <input type="text" class="form-control shadow p-3 mb-5 bg-body rounded" id="session"
+                                placeholder="enter your session">
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <label for="subject">Your Subject</label>
+                        <input type="text" class="form-control shadow p-3 mb-5 bg-body rounded" id="subject"
+                            placeholder="enter your subject">
+                    </div>
+                    <div class="col-md">
+                        <div class="mb-3">
+                            <label for="text_area" class="form-label">Your Message</label>
+                            <textarea class="form-control shadow p-3 mb-5 bg-body rounded" id="text_area" rows="3"
+                                placeholder="enter your message"></textarea>
+                        </div>
+                    </div>
+                    <button type="button" id="btn" class="btn btn-outline-primary">Send Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> 
+
+{% endblock %}
