@@ -3,7 +3,7 @@ from daksh.models import Member
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate , login as dj_login , logout
-from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -12,19 +12,38 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'about.html')   
+    if not request.user.is_authenticated:
+        messages.error(request, "you are not able to see the page , please login first")
+        return redirect('/')
+
+    else:
+        return render(request, 'about.html')   
 
 
 def galary(request):
-    return render(request, 'galary.html')   
+    if not request.user.is_authenticated:
+        messages.error(request, "you are not able to see the page , please login first")
+        return redirect('/')
+
+    else:   
+        return render(request, 'galary.html')   
 
 
 def contact(request):
-    return render(request, 'contact.html')   
+    if not request.user.is_authenticated:
+        messages.error(request, "you are not able to see the page , please login first")
+        return redirect('/')
+
+    else:
+        return render(request, 'contact.html')   
 
 
 def join_us(request):
-    if request.method == "POST":
+    if not request.user.is_authenticated:
+        messages.error(request, "you are not able to see the page , please login first")
+        return redirect('/')
+
+    elif request.method == "POST":
         name = request.POST.get('name')
         branch = request.POST.get('branch')
         reg_no = request.POST.get('Reg')
@@ -50,7 +69,11 @@ def signup(request):
         signuppassword = request.POST.get('signuppassword')
         signupcpassword = request.POST.get('signupcpassword')
 
-        if signuppassword != signupcpassword :
+        if User.objects.filter(username = request.POST['signupuser']).exists():
+            messages.error(request , 'Username already exists try unique one')
+            return redirect('/')
+
+        elif signuppassword != signupcpassword :
             messages.error(request , 'conform your password')
             return redirect('/')
 
@@ -90,4 +113,9 @@ def handlelogout(request):
 
 
 def profile(request):
-    return render(request, 'profile.html')   
+    if not request.user.is_authenticated:
+        messages.error(request, "you are not able to see the page , please login first")
+        return redirect('/')
+
+    else:
+        return render(request, 'profile.html')   
