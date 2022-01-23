@@ -2,7 +2,8 @@ from django.shortcuts import render , HttpResponse , redirect
 from daksh.models import Member
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate , login , logout
+from django.contrib.auth import authenticate , login as dj_login , logout
+from django.contrib.auth import logout
 
 # Create your views here.
 
@@ -64,25 +65,28 @@ def signup(request):
 
 def login(request):
     if request.method == "POST":
-        loginemail = request.POST.get('loginemail')
+        loginuser = request.POST.get('loginuser')
         loginpassword = request.POST.get('loginpassword')
 
-        user = authenticate(emailaddress=loginemail , password=loginpassword)
+        user = authenticate(request , username=loginuser , password=loginpassword)
 
         if user is not None:
-            login(request, user )
+            dj_login(request, user)
             messages.success(request, 'You are logged in successfully')
-            redirect('/')
+            return redirect('/')
         
         else:
             messages.error(request, 'Invalid credentials please try again')
-            redirect('/')
+            return redirect('/')
 
     return HttpResponse('404 - page not found') 
 
 
-def logout(request):
-    return HttpResponse('logout page')   
+def handlelogout(request):
+    logout(request)
+    messages.success(request, 'You are logged out successfully')
+    return redirect('/')
+
 
 
 def profile(request):

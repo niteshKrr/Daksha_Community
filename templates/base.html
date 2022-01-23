@@ -29,9 +29,6 @@
                     <li class="nav-item me-5">
                         <a class="nav-link" href="/">Home</a>
                     </li>
-                    <li class="nav-item me-5">
-                        <a class="nav-link" href="/profile">Profile</a>
-                    </li>
                     <li class="nav- me-5">
                         <a class="nav-link" href="/about">About</a>
                     </li>
@@ -42,12 +39,25 @@
                         <a class="nav-link" href="/contact">Contact_Us</a>
                     </li>
                 </ul>
-
-                    <!-- signup Button trigger modal -->
-                    <button type="button" class="btn btn-outline-primary me-5" data-bs-toggle="modal" data-bs-target="#signupModal">Sign_Up</button>
-
-                    <!-- login Button trigger modal -->
-                    <button type="button" class="btn btn-outline-primary me-5" data-bs-toggle="modal" data-bs-target="#loginModal">login</button>
+                {% if user.is_authenticated %}
+                <div class="dropdown me-5">
+                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Welcome : {{ user.username }}
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item text-decoration-underline text-muted" href="/profile">Profile</a></li>
+                      <li><a class="dropdown-item text-decoration-underline text-muted" href="/logout">Logout</a></li>
+                    </ul>
+                  </div>
+                {% else %}
+                <!-- signup Button trigger modal -->
+                <button type="button" class="btn btn-outline-primary me-5" data-bs-toggle="modal"
+                data-bs-target="#signupModal">Sign_Up</button>
+                
+                <!-- login Button trigger modal -->
+                <button type="button" class="btn btn-outline-primary me-5" data-bs-toggle="modal"
+                data-bs-target="#loginModal">login</button>
+                {% endif %}
 
             </div>
         </div>
@@ -58,7 +68,7 @@
     <div class="alert alert-{{ message.tags }} alert-dismissible fade show mb-0" role="alert">
         <strong>Message!</strong> {{ message }}
         <button type="button" class="btn-close " data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+    </div>
     {% endfor %}
 
 
@@ -66,36 +76,37 @@
     <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModal" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="signupModal">Sign_Up Now</h5>
+                <div class="modal-header ">
+                    <h5 class="modal-title " id="signupModal">Sign_Up Now</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="/signup" method="POST" >
+                    <form action="/signup" method="POST">
                         {% csrf_token %}
                         <div class="col-md">
                             <label for="signupuser">Your User Name</label>
                             <input type="text" class="form-control shadow p-3 mb-5 bg-body rounded" id="signupuser"
-                                placeholder="enter your user name" name="signupuser">
+                                placeholder="your user name should be unique" name="signupuser" required>
                         </div>
                         <div class="col-md">
                             <label for="signupemail">Your Email address</label>
                             <input type="email" class="form-control shadow p-3 mb-5 bg-body rounded" id="signupemail"
-                                placeholder="enter your email-id" name="signupemail">
+                                placeholder="enter your email-id" name="signupemail" required>
                         </div>
                         <div class="col-md ">
                             <label for="signuppassword">Your Password</label>
-                            <input type="password" class="form-control shadow p-3 mb-5 bg-body rounded" id="signuppassword"
-                                placeholder="enter your password" name="signuppassword">
+                            <input type="password" class="form-control shadow p-3 mb-5 bg-body rounded"
+                                id="signuppassword" placeholder="enter your password" name="signuppassword" required>
                         </div>
                         <div class="col-md ">
                             <label for="signupcpassword">Conform Your Password</label>
-                            <input type="password" class="form-control shadow p-3 mb-5 bg-body rounded" id="signupcpassword"
-                                placeholder="conform your password" name="signupcpassword">
+                            <input type="password" class="form-control shadow p-3 mb-5 bg-body rounded"
+                                id="signupcpassword" placeholder="conform your password" name="signupcpassword"
+                                required>
                         </div>
                         <button type="submit" class="btn btn-outline-primary mb-2 mx-2">Sign_Up</button>
                     </form>
-                        
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
@@ -114,20 +125,20 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="/login" method="POST" >
+                    <form action="/login" method="POST">
                         {% csrf_token %}
                         <div class="col-md">
-                            <label for="loginemail">Your Email address</label>
-                            <input type="email" class="form-control shadow p-3 mb-5 bg-body rounded" id="loginemail"
-                                placeholder="enter your email-id" name="loginemail">
+                            <label for="loginuser">Your User Name</label>
+                            <input type="text" class="form-control shadow p-3 mb-5 bg-body rounded" id="loginuser"
+                                placeholder="enter your user name" name="loginuser" required>
                         </div>
                         <div class="col-md ">
                             <label for="loginpassword">Your Password</label>
-                            <input type="password" class="form-control shadow p-3 mb-5 bg-body rounded" id="loginpassword"
-                                placeholder="enter your password" name="loginpassword">
+                            <input type="password" class="form-control shadow p-3 mb-5 bg-body rounded"
+                                id="loginpassword" placeholder="enter your password" name="loginpassword" required>
                         </div>
                         <button type="submit" class="btn btn-outline-primary mb-2 mx-2">Login</button>
-                    </form> 
+                    </form>
 
                 </div>
                 <div class="modal-footer">
