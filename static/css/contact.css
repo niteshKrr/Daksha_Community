@@ -1,0 +1,9 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+
+section{
+    background-image: url("/static/images/c3.jpg");
+    background-position: center;
+}

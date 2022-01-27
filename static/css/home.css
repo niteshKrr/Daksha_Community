@@ -9,6 +9,6 @@ section .home-txt{
 
 
 section{
-    background-image: url("/media/cover_home.jpg");
+    background-image: url("/static/images/cover_home.jpg");
     height: 100vh;
 }

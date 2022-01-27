@@ -1,57 +1,68 @@
+{% extends "base.html" %} // Inherits all the components from base template, including the header and footer
 
-{% extends "base.html" %}   // Inherits all the components from base template, including the header and footer
-{% block title%} Home {% endblock%}
+{% block head%}
+<link rel="stylesheet" href="/static/css/contact.css">
+{% endblock%}
+
+{% block title%} Contact {% endblock%}
 
 
-{% block body %} 
+{% block body %}
+<div id="alert"> </div>
 
 <section class="contact-page py-5">
-    <h1 class="text-center fw-bold">Contact Us</h1>
-    <div class="container py-1">
+    <h1 class="text-center fw-bold text-white">Contact Us</h1>
+    <div class="container py-4">
         <div class="row">
             <div class="col-md mt-5">
                 <div class="contact-right">
-                    <div class="row ">
-                        <div class="col-md ">
-                            <label for="name">Your Name</label>
-                            <input type="text" class="form-control shadow p-3 mb-5 bg-body rounded" id="name"
-                                placeholder="enter your name">
+                    <form action="/contact" method="POST">
+                        {% csrf_token %}
+                        <div class="row ">
+                            <div class="col-md text-white">
+                                <label for="name">Your Name</label>
+                                <input type="text" class="form-control shadow p-3 mb-5 bg-body rounded" id="name"
+                                    placeholder="enter your name" required>
+                            </div>
+                            <div class="col-md text-white">
+                                <label for="email">Your Email address</label>
+                                <input type="email" class="form-control shadow p-3 mb-5 bg-body rounded" id="email"
+                                    placeholder="enter your email-id" required>
+                            </div>
                         </div>
-                        <div class="col-md">
-                            <label for="email">Your Email address</label>
-                            <input type="email" class="form-control shadow p-3 mb-5 bg-body rounded" id="email"
-                                placeholder="enter your email-id">
+                        <div class="row ">
+                            <div class="col-md text-white">
+                                <label for="branch">Your Branch</label>
+                                <input type="email" class="form-control shadow p-3 mb-5 bg-body rounded" id="branch"
+                                    placeholder="enter your branch" required>
+                            </div>
+                            <div class="col-md text-white ">
+                                <label for="session">Your Session</label>
+                                <input type="text" class="form-control shadow p-3 mb-5 bg-body rounded" id="session"
+                                    placeholder="enter your session" required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row ">
-                        <div class="col-md">
-                            <label for="branch">Your Branch</label>
-                            <input type="email" class="form-control shadow p-3 mb-5 bg-body rounded" id="branch"
-                                placeholder="enter your branch">
+                        <div class="col-md text-white">
+                            <label for="subject">Your Subject</label>
+                            <input type="text" class="form-control shadow p-3 mb-5 bg-body rounded" id="subject"
+                                placeholder="enter your subject" required>
                         </div>
-                        <div class="col-md ">
-                            <label for="session">Your Session</label>
-                            <input type="text" class="form-control shadow p-3 mb-5 bg-body rounded" id="session"
-                                placeholder="enter your session">
+                        <div class="col-md text-white">
+                            <div class="mb-3">
+                                <label for="text_area" class="form-label">Your Message</label>
+                                <textarea class="form-control shadow p-3 mb-5 bg-body rounded" id="text_area" rows="3"
+                                    placeholder="enter your message" required></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md">
-                        <label for="subject">Your Subject</label>
-                        <input type="text" class="form-control shadow p-3 mb-5 bg-body rounded" id="subject"
-                            placeholder="enter your subject">
-                    </div>
-                    <div class="col-md">
-                        <div class="mb-3">
-                            <label for="text_area" class="form-label">Your Message</label>
-                            <textarea class="form-control shadow p-3 mb-5 bg-body rounded" id="text_area" rows="3"
-                                placeholder="enter your message"></textarea>
-                        </div>
-                    </div>
-                    <button type="button" id="btn" class="btn btn-outline-primary">Send Message</button>
+                        <button type="submit" id="btn" class="btn btn-primary text-white">Send Message</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-</section> 
+</section>
+
+
+<script src="/static/js/contact.js"></script>
 
 {% endblock %}

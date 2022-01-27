@@ -1,0 +1,16 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+
+section{
+    background-image: url("/static/images/about.jpg");
+    background-position: center;
+}
+
+.card img{
+    height: 181px;
+    width: 178px;
+    margin-left: 63px;
+    margin-top: 10px;
+}

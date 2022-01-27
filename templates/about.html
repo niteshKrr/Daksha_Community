@@ -1,14 +1,117 @@
+{% extends "base.html" %} // Inherits all the components from base template, including the header and footer
 
-{% extends "base.html" %}   // Inherits all the components from base template, including the header and footer
-{% block title%} Home {% endblock%}
+{% block head%}
+<link rel="stylesheet" href="/static/css/about_us.css">
+{% endblock%}
+
+{% block title%} About {% endblock%}
 
 
-{% block body %} 
+{% block body %}
 
-<div class="container my-4">
+<section class="about-page py-5">
+    <h1 class="text-center fw-bold text-white">About Us</h1>
 
-    <h1> About page </h1>
 
-</div>
+    <div class="container py-5">
+
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia voluptate est ipsum temporibus ea blanditiis
+            repellat deleniti cumque iusto. Facilis nesciunt quaerat eligendi nostrum amet cum natus sed. Voluptate
+            voluptates quidem minus id, est, neque possimus sit ipsa voluptatem alias, sint dolorum dicta. Atque
+            dignissimos fugit rem architecto vitae itaque repellendus, qui veritatis reiciendis aliquid ipsam illum nisi
+            assumenda dolorem suscipit exercitationem quia distinctio possimus commodi inventore minima nam ab sapiente.
+            Quia amet nisi esse in ullam aut iure labore. Neque provident, tempore eveniet, quam asperiores at
+            praesentium vero labore maiores quisquam aut cumque necessitatibus alias quae beatae blanditiis non!
+            bchbchhvb jcnjvvn djnjvnjdfnv jcnjvnkjdf jndshvbkhfdvb jdcnjdnskd jdnajdd jkdnsjnj jdnjdn hbdhsbhvbh
+            jdnjsdcn jdndjscnjds jkdnsdc jdcdscdc </p>
+
+    </div>
+
+
+    <div class="container py-3">
+
+        <div class="row">
+            <div class="col-md-6 mt-4">
+                <div class="h-100 p-5 border rounded-3">
+                    <h3 class="text-center fw-bold text-white">who we are</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur voluptate asperiores expedita
+                        hic
+                        nihil sunt, repellendus earum aliquid eligendi quasi blanditiis cupiditate nemo impedit dolore?
+                        Accusamus, maiores quis. Nemo, nihil aliquam atque pariatur asperiores expedita! Officiis,
+                        magnam
+                        veritatis neque perferendis aspernatur aliquid unde consequatur consequuntur. Quis quam
+                        consequuntur
+                        dolorum molestiae?</p>
+                </div>
+            </div>
+            <div class="col-md-6 mt-4">
+                <div class="h-100 p-5 border rounded-3">
+                    <h3 class="text-center fw-bold text-white">why choose us</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur voluptate asperiores expedita
+                        hic
+                        nihil sunt, repellendus earum aliquid eligendi quasi blanditiis cupiditate nemo impedit dolore?
+                        Accusamus, maiores quis. Nemo, nihil aliquam atque pariatur asperiores expedita! Officiis,
+                        magnam
+                        veritatis neque perferendis aspernatur aliquid unde consequatur consequuntur. Quis quam
+                        consequuntur
+                        dolorum molestiae?</p>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+    <div class="container py-5">
+        <h3 class="text-center fw-bold text-white">Meet Some Of Us</h3>
+
+        <div class="card-group my-4 text-center py-5">
+
+            <div class="card mx-3" style="border-radius: 5px;">
+                <img src="/media/galary/11.jpg" class="card-img-top-sm" alt="loading..." style="border-radius: 100px;">
+                <div class="card-body">
+                    <h5 class="card-title">Gyanveer Sir</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional cotent.</p>
+                </div>
+            </div>
+
+            <div class="card mx-3" style="border-radius: 5px;">
+                <img src="/media/galary/12.jpg" class="card-img-top" alt="loading..." style="border-radius: 100px;">
+                <div class="card-body">
+                    <h5 class="card-title">Akash Sir</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional
+                        content.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card mx-3" style="border-radius: 5px;">
+                <img src="/media/galary/13.jpg" class="card-img-top" alt="loading..." style="border-radius: 100px;">
+                <div class="card-body">
+                    <h5 class="card-title">Nirman Sir</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional content.</p>
+                </div>
+            </div>
+
+            <div class="card mx-3" style="border-radius: 5px;">
+                <img src="/media/galary/14.jpg" class="card-img-top" alt="loading..." style="border-radius: 100px;">
+                <div class="card-body">
+                    <h5 class="card-title">Nitesh Kr.</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional content.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</section>
 
 {% endblock %}

@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate , login as dj_login , logout
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 # Create your views here.
 
@@ -20,13 +21,13 @@ def about(request):
         return render(request, 'about.html')   
 
 
-def galary(request):
+def gallery(request):
     if not request.user.is_authenticated:
         messages.error(request, "you are not able to see the page , please login first")
         return redirect('/')
 
     else:   
-        return render(request, 'galary.html')   
+        return render(request, 'gallery.html')   
 
 
 def contact(request):
@@ -44,18 +45,26 @@ def join_us(request):
         return redirect('/')
 
     elif request.method == "POST":
+        user = request.user
         name = request.POST.get('name')
         branch = request.POST.get('branch')
         reg_no = request.POST.get('Reg')
         roll_no = request.POST.get('Roll')
         session = request.POST.get('session')
-        email = request.POST.get('email')
         image = request.FILES['image']
+        about = request.POST.get('about')
 
-        data = Member(name=name , branch=branch , reg_no=reg_no ,roll_no=roll_no , session=session ,email=email , image=image  )
-        data.save()
-        messages.success(request, "Congrats now , you are a member")
-        return redirect('/join_us')
+
+        if Member.objects.filter(user=request.user).exists():
+            messages.error(request , 'User already a member , try unique one')
+            return redirect('/join_us')
+
+        
+        else: 
+            data = Member(user=user ,name=name , branch=branch , reg_no=reg_no ,roll_no=roll_no , session=session ,about=about , image=image  )
+            data.save()
+            messages.success(request, "Congrats now , you are a member")
+            return redirect('/')
 
     else:
         return render(request, 'join_us.html')   
@@ -117,5 +126,12 @@ def profile(request):
         messages.error(request, "you are not able to see the page , please login first")
         return redirect('/')
 
+    elif Member.objects.filter(user=request.user).exists():
+        allmembers = Member.objects.filter(user=request.user)
+        context = {'userprofile': allmembers}
+        return render(request, 'profile.html' , context)   
+
     else:
-        return render(request, 'profile.html')   
+        messages.error(request, " your profile does not exist , please join_us first")
+        return redirect('/')
+
