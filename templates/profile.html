@@ -20,17 +20,18 @@
             </div>
             <div class="col-md-4">
 
+                
                 {% for msgs in userprofile %}
-
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><span>Branch :</span> {{msgs.branch}} </li>
-                    <li class="list-group-item"><span>Session :</span> {{msgs.session}}</li>
-                    <li class="list-group-item"><span>About_Me :</span> {{msgs.about}}</li>
+                    <li class="list-group-item"><span>Email :</span> {{msgs.user.email}}</li>
                     <li class="list-group-item"><span>Registration No. :</span> {{msgs.reg_no}}</li>
+                    <li class="list-group-item"><span>Branch :</span> {{msgs.branch}} </li>
+                    <li class="list-group-item"><span>About_Me :</span> {{msgs.about}}</li>
                     <li class="list-group-item"><span>Roll No. :</span> {{msgs.roll_no}}</li>
+                    <li class="list-group-item"><span>Session :</span> {{msgs.session}}</li>
                 </ul>
-
                 {% endfor %}
+
             </div>
             <div class="col">
 

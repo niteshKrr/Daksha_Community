@@ -55,11 +55,14 @@ def join_us(request):
         about = request.POST.get('about')
 
 
-        if Member.objects.filter(user=request.user).exists():
+        if image.size > 2*1024*1024:
+            messages.error(request , 'Maximum allowed size for image is less than 2mb')
+            return redirect('/join_us')
+
+        elif Member.objects.filter(user=request.user).exists():
             messages.error(request , 'User already a member , try unique one')
             return redirect('/join_us')
 
-        
         else: 
             data = Member(user=user ,name=name , branch=branch , reg_no=reg_no ,roll_no=roll_no , session=session ,about=about , image=image  )
             data.save()
@@ -134,4 +137,3 @@ def profile(request):
     else:
         messages.error(request, " your profile does not exist , please join_us first")
         return redirect('/')
-
